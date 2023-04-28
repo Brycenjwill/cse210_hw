@@ -27,15 +27,20 @@ class Program
 
 
         }
+        int biggest = 0;
         int total = 0;
         foreach (var num in numbers) {
             total += num;
+            if (num > biggest){
+                biggest = num;
+            }
         }
         length = numbers.Count();
         average = (float)total / (float)length;
 
         Console.WriteLine($"The total is {total}.");
         Console.WriteLine($"The average is {average}.");
+        Console.WriteLine($"The largest number is {biggest}");
     }
     
 }
