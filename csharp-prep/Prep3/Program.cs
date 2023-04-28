@@ -8,6 +8,7 @@ class Program
         int magicNumber = generator.Next(1,100);
     
         int userGuess = -1;
+        int count = 0;
 
     while (userGuess != magicNumber) {
         Console.WriteLine("Guess a number. ");
@@ -26,6 +27,9 @@ class Program
         else {
             Console.WriteLine("ERROR?");
         }
+        count += 1;
     }
+    Console.WriteLine($"You guessed it! It only took you {count} guesses.");
+    
     } 
 }
