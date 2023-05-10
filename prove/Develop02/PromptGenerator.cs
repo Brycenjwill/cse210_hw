@@ -15,7 +15,7 @@ public class Prompt
 
 public string PromptGen(){
     int index = numberGenerator.Next(Prompts.Count);
-    
+    string Prompt = Prompts[index];
     return Prompt;
 }
 }
