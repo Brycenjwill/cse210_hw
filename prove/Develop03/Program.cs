@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        string scripture = "And my father dwelt in a atent.";
+        Reference reference = new Reference("2", "15");
+        
     }
 }
