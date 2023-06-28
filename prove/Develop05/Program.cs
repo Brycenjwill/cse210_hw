@@ -38,11 +38,13 @@ class Program
                 }
             }   
             else if (choice == 2){
-                /*Next part to handle :)*/
+                    displayGoals();
+                    string dispoints = loaded[0];
+                    Console.WriteLine($"\n You have {dispoints} points.\n");
                 }
             
             else if(choice == 3){
-                Console.WriteLine("Are you sure you are ready to save?\n   0. No, take me back\n   1. Yes.");
+                Console.WriteLine("Are you sure you are ready to save?\n   0. No, take me back\n   1. Yes.   ");
                 int areYouSure = Convert.ToInt32(Console.ReadLine());
                 if(areYouSure == 0){
                 }
@@ -59,7 +61,10 @@ class Program
                 goalList = createGoalsFromLoad(loaded);
             }
             else if (choice == 5){
-                Console.WriteLine("RECORD EVENT"); /* Next to do! Need to use both Goalist and loaded arrays to increment values. The actual objects are in Goalist, loaded is mostly for display purposes to not require get statements as much*/
+                displayGoals();
+                Console.Write("Which goal did you accomplish? ");
+                int goalchoice = Convert.ToInt32(Console.ReadLine()); 
+                recordEvent(goalchoice);
             }
             else if (choice == 0){
                 on = false;
@@ -259,6 +264,92 @@ class Program
         outputFile.WriteLine(line);
     }
 }
+    }
+    void displayGoals(){
+        int i = 0;
+        Console.WriteLine("The goals are: ");
+        foreach(string goal in loaded){
+            if(goal!= ""){
+                if(goal!= null){
+            if(i>0){
+                string Check;
+                string info = goal.Split(":")[1];
+                string[] splitGoals = info.Split(",");
+                string name = splitGoals[0];
+                string desc = splitGoals[1];
+                string points = splitGoals[2];
+
+                if(goal.Split(":")[0]=="Simple"){
+                string done = splitGoals[3];
+                if(done == "true"){
+                    Check = "X"; 
+                }
+                else{
+                    Check = " ";
+                }
+                Console.WriteLine($"{i}. [{Check}] {name} ({desc})");
+                }
+                else if(goal.Split(":")[0] == "Eternal"){
+                    Console.WriteLine($"{i}. [ ] {name} ({desc})");
+                }
+                else if(goal.Split(":")[0] == "Checklist"){
+                    string bonuspoints = splitGoals[3];
+                    string bonusquanity = splitGoals[4];
+                    string amtdone = splitGoals[5];
+                    if(amtdone == bonusquanity){
+                        Check = "X";
+                    }
+                    else{
+                        Check = " ";
+                    }
+                    Console.WriteLine($"{i }. [{Check}] {name} ({desc}) -- Currently completed: {amtdone}/{bonusquanity}");
+                }
+
+                
+            }
+                }
+                i++;
+            }
+        }
+    }
+    void recordEvent(int choice){
+        int i = 1;
+        foreach(Goal goal in goalList){
+            if(i == choice){
+                string curgoal = loaded[i];
+                string[] goalsplit = curgoal.Split(":");
+                string[] goalinfo = goalsplit[1].Split(",");
+                int curpoints = Convert.ToInt32(loaded[0]);
+                
+                if(goalsplit[0] == "Simple"){
+                    curpoints += goal.getPoints();
+                    loaded[i] = "Simple:"+goalinfo[0] +","+ goalinfo[1]+","+goalinfo[2]+","+ "true"; 
+                    
+
+                    loaded[0] = Convert.ToString(curpoints);
+                    return;
+                }
+                else if(goalsplit[0] == "Eternal"){
+                    curpoints += goal.getPoints();
+                    loaded[i] = "Eternal:"+goalinfo[0] +","+goalinfo[1]+","+goalinfo[2];
+
+
+                    loaded[0] = Convert.ToString(curpoints);
+                    return;
+                }
+                else if (goalsplit[0] == "Checklist"){
+                    curpoints+= goal.getPoints();
+                    int timesdone = Convert.ToInt32(goalinfo[5]);
+                    timesdone ++;
+                    loaded[i] = "Checklist" + goalinfo[0]+","+goalinfo[1]+","+goalinfo[2]+","+goalinfo[3]+","+goalinfo[4]+","+Convert.ToString(timesdone);
+
+                    loaded[0] = Convert.ToString(curpoints);
+                    return;
+                }
+
+
+            }
+        }
     }
     }
 

@@ -7,6 +7,7 @@ public class Eternal : Goal{
     }
     public override int getPoints()
     {
+        _timesDone += 1;
         return base.getPoints();
     }
 

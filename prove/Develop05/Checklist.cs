@@ -15,6 +15,7 @@ public class Checklist : Goal{
     }
     public override int getPoints()
     {
+        _timesDone += 1;
         if (_timesDone == _quantityGoal){
             return _quantityBonus;
         }
