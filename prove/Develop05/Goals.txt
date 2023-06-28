@@ -1,4 +1,13 @@
 0
-SimpleGoal:Give a talk,Speak in Sacrament meeting, 100,False
-EthernalGoal:Study the scriptures, Study for at least 10 minutes,50
-ChecklistGoal:Attend the temple,Attend and perform any ordinance,50,500,3,False
+Simple:Give a talk,Speak in Sacrament meeting,100,false
+Eternal:Study the scriptures,Study for at least 10 minutes,50
+Checklist:Attend the temple,Attend and perform any ordinance,50,500,3,0
+
+
+
+
+
+
+
+
+

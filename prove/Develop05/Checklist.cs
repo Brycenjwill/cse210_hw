@@ -4,8 +4,8 @@ public class Checklist : Goal{
     private int _quantityBonus;
     private int _timesDone;
 
-    public Checklist(string description, string name, int points, int quantityGoal, int quantityBonus) :base(description, name, points){
-        _timesDone = 0;
+    public Checklist(string description, string name, int points, int quantityGoal, int quantityBonus, int timesdone) :base(description, name, points){
+        _timesDone = timesdone;
         _quantityBonus = quantityBonus;
         _quantityGoal = quantityGoal;
         _done = false;
