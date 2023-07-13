@@ -24,4 +24,7 @@ class Galaxy{
     public SupermassiveBlackHole getBlackHoleName(){
         return _blackHoleName;
     }
+    public string getName(){
+        return _name;
+    }
 }

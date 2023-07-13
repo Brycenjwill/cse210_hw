@@ -6,7 +6,13 @@ class Body{
         _name = name;
         _mass = mass;
     }
-    public void display(){
+    public string getName(){
+        return _name;
+    }
+    public float getMass(){
+        return _mass;
+    }
+    virtual public void display(){
 
     }
 }
